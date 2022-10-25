@@ -14,7 +14,7 @@ class KonyvPublicView {
 
 
     kattintasTrigger(es){
-        const esemeny = new CustomEvent(es,{detail:this.#elem.id});
+        const esemeny = new CustomEvent(es,{detail:this.#elem});
         window.dispatchEvent(esemeny);
     }
 

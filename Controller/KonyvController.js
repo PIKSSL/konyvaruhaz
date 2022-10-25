@@ -5,11 +5,12 @@ import KonyvModel from "../Model/KonyvModel.js";
 
 
 class KonyvController {
+    #adatok = [];
     constructor() {
         const konyvmodel = new KonyvModel();
         $("#admin").on("click",()=>{
             konyvmodel.adatBe("../adat.json", this.konyvAdatok);
-
+            
         });
         $("#public").on("click",()=>{
             konyvmodel.adatBe("../adat.json", this.konyvPublicAdatok);
@@ -22,21 +23,23 @@ class KonyvController {
         });
         $(window).on("torol",(event)=>{
             konyvmodel.adatTorol(event.detail);
+            new KonyvekView(konyvmodel.getKonyvek(),$('article'));  
+            
         })
-        $(window).on("kosarba",(event)=>{
-            konyvmodel.kosarba(event.detail);
-        })
+
 
 
 
     }
 
     konyvAdatok(tomb) {
-        const szuloElem=$('main');
+
+        const szuloElem=$('article');
         new KonyvekView(tomb, szuloElem);
     }
 
     konyvPublicAdatok(tomb){
+
         const szuloElem=$('article');
         new KonyvekPublicView(tomb, szuloElem);
     }

@@ -2,7 +2,7 @@ import KonyvView from "./KonyvView.js";
 
 class KonyvekView {
     constructor(tomb, szuloElem) {
-        szuloElem.append(`<table><thead><tr>
+        szuloElem.html(`<table><thead><tr>
         <th>ID</th>
         <th>Cím</th>
         <th>Szerző</th>

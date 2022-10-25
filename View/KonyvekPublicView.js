@@ -2,7 +2,7 @@ import KonyvPublicView from "./KonyvPublicView.js";
 
 class KonyvekPublicView {
     constructor(tomb, szuloElem) {
-        szuloElem.append(`<div class='konyvContainer'> </div>`);
+        szuloElem.html(`<div class='konyvContainer'> </div>`);
         this.tablaElem = szuloElem.children("table:last-child");
         this.tbodyElem = this.tablaElem.children('tbody');
 

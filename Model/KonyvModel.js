@@ -1,18 +1,29 @@
 class KonyvModel {
     #konyvekTomb = [];
-
+    #konyvekTombB = [];
     constructor() {
-        console.log("KonyvModel");
+
     }
 
     adatModosit(data) {
-        console.log("Modellben modosit", data);
+        
     }
-    adatTorol(data) {
-        console.log("Modellben torol", data);
+    adatTorol(i) {
+        this.index=0;
+        for (const item of this.#konyvekTomb) {
+            
+            if(parseInt(i) != parseInt(item.id)){
+                this.#konyvekTombB.push(item);
+            }
+            
+        }
+        this.#konyvekTomb = this.#konyvekTombB;
+        this.#konyvekTombB=[];
+        
     }
-    kosarba(data){
-        console.log("Kosárba tette",data);
+
+    getKonyvek(){
+        return this.#konyvekTomb;
     }
 
     adatBe(vegpont, myCallBack) {
@@ -24,9 +35,9 @@ class KonyvModel {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data);
+                
                 this.#konyvekTomb = data.konyv;
-                console.log(this.#konyvekTomb);
+                
                 myCallBack(this.#konyvekTomb);
             })
             .catch((error) => {
